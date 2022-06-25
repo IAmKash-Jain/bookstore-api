@@ -33,7 +33,7 @@ const getBookById = async (req, res) => {
 
 //Add a Book
 const addBook = async (req, res) => {
-    const { name, author, desc, price, available , image } = req.body;
+    const { name, author, desc, price, available, image } = req.body;
     let book;
     try {
         book = new Book({
@@ -56,7 +56,7 @@ const addBook = async (req, res) => {
 
 //Update Book by ID
 const updateBookById = async (req, res) => {
-    const { name, author, desc, price, available , image } = req.body;
+    const { name, author, desc, price, available, image } = req.body;
     const id = req.params.id;
     let book;
     try {
@@ -70,31 +70,31 @@ const updateBookById = async (req, res) => {
         });
         book = await book.save();
     } catch (err) {
-        console.log("Error Updating Book :"+err);
+        console.log("Error Updating Book :" + err);
     }
-    if(!book){
+    if (!book) {
         return res.status(500).json({ message: "Unable to Update book by this ID" });
     }
     return res.status(201).json({ book });
 }
 
 //Delete Book by ID
-const deleteBookById= async(req,res)=>{
+const deleteBookById = async (req, res) => {
     const id = req.params.id;
     let book;
-    try{
+    try {
         book = await Book.findByIdAndRemove(id);
-    }catch(err){
-        console.log("Cannot Delete the Book :"+err);
+    } catch (err) {
+        console.log("Cannot Delete the Book :" + err);
     }
-    if(!book){
-        return res.status(404).json({message:"Unable to Delete Book"});
+    if (!book) {
+        return res.status(404).json({ message: "Unable to Delete Book" });
     }
-    return res.status(200).json({message:"Book Delete Successfully"});
+    return res.status(200).json({ message: "Book Delete Successfully" });
 }
 
 exports.getAllBooks = getAllBooks;
 exports.getBookById = getBookById;
 exports.addBook = addBook;
-exports.updateBookById =updateBookById;
-exports.deleteBookById=deleteBookById;
+exports.updateBookById = updateBookById;
+exports.deleteBookById = deleteBookById;

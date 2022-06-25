@@ -4,13 +4,13 @@ const booksController = require("../controllers/book-controllers");
 
 router.get("/", booksController.getAllBooks);
 router.get("/books", booksController.getAllBooks);
-router.get("/book/:id",booksController.getBookById);
+router.get("/book/:id", booksController.getBookById);
 
-router.post("/book",booksController.addBook);
+router.post("/book", booksController.addBook);
 
-router.put("/book/:id",booksController.updateBookById);
+router.put("/book/:id", booksController.updateBookById);
 
-router.delete("/book/:id",booksController.deleteBookById);
+router.delete("/book/:id", booksController.deleteBookById);
 
 
 module.exports = router;
